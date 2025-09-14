@@ -1,7 +1,4 @@
-
-
-
-
+```
 structure as for now
 my-express-app/
 ├── views/
@@ -13,3 +10,4 @@ my-express-app/
 ├── package-lock.json
 ├── server.js (or index.js)
 ├── .gitignore
+```
