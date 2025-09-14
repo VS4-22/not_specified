@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/mongopract");
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 const uschma = mongoose.Schema({
 name:String,
 email:String,
