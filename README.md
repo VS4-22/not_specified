@@ -1,65 +1,62 @@
+# User Management CRUD Application
+
 A full-stack user management application built with Node.js, Express, and EJS. It provides a clean, responsive interface for performing Create, Read, Update, and Delete (CRUD) operations on user profiles.
+## ✨ Features
 
-A preview of the responsive user list page.
+- **Full CRUD Functionality**: Create, Read, Update, and Delete user profiles.
+- **Responsive Design**: The user interface is built with **Tailwind CSS** to be fully responsive.
+- **Dynamic Rendering**: Uses **EJS** as a templating engine to dynamically render user data.
+- **Database Integration**: Connects to a **MongoDB** database to persist user data.
+- **Structured Backend**: Follows a logical MVC-like pattern for clean code.
 
-✨ Features
-Full CRUD Functionality: Create, Read, Update, and Delete user profiles.
+---
 
-Responsive Design: The user interface is built with Tailwind CSS to be fully responsive and look great on all devices, from mobile phones to desktops.
+## 🛠️ Tech Stack
 
-Dynamic Rendering: Uses EJS as a templating engine to dynamically render user data on the server.
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB with Mongoose ODM
+- **Frontend**: EJS, Tailwind CSS
+- **Package Manager**: npm
 
-Database Integration: Connects to a MongoDB database to persist user data.
+---
 
-Structured Backend: Follows a logical MVC-like pattern (Models, Views, Controllers/Routes) for clean and maintainable code.
+## 🚀 Getting Started
 
-🛠️ Tech Stack
-Backend: Node.js, Express.js
+Follow these instructions to get the project running on your local machine.
 
-Database: MongoDB with Mongoose ODM
+### Prerequisites
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
 
-Frontend: EJS (Embedded JavaScript templates), Tailwind CSS
+### Installation
 
-Package Manager: npm
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/VS4-22/not_specified.git](https://github.com/VS4-22/not_specified.git)
+    ```
 
-🚀 Getting Started
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+2.  **Navigate to the project directory**
+    ```bash
+    cd not_specified
+    ```
 
-Prerequisites
-Make sure you have the following software installed on your system:
+3.  **Install NPM packages**
+    ```bash
+    npm install
+    ```
 
-Node.js (which includes npm)
+4.  **Create an environment file (`.env`)**
+    Create a `.env` file in the root of the project and add your credentials:
+    ```
+    MONGODB_URI=your_mongodb_connection_string_here
+    PORT=3000
+    ```
 
-MongoDB (or a MongoDB Atlas cloud account)
+### Running the Application
 
-Installation
-Clone the repository
-
-Bash
-
-git clone https://github.com/VS4-22/not_specified.git
-Navigate to the project directory
-
-Bash
-
-cd not_specified
-Install NPM packages
-
-Bash
-
-npm install
-Create an environment file
-Create a .env file in the root of the project and add your MongoDB connection string. This file is ignored by Git to keep your credentials private.
-
-MONGODB_URI=your_mongodb_connection_string_here
-PORT=3000
-Running the Application
-Once the setup is complete, you can start the server with the following command:
-
-Bash
-
+Start the server with the following command:
+```bash
 npm start
-The application will be available at http://localhost:3000 in your browser.
 
 📂 Project Structure
 The repository is organized following a standard MVC-like pattern:
