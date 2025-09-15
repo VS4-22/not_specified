@@ -57,8 +57,8 @@ Follow these instructions to get the project running on your local machine.
 Start the server with the following command:
 ```bash
 npm start
-
-📂 Project Structure
+```
+### Project Structure
 The repository is organized following a standard MVC-like pattern:
 
 ├── public/               # Static assets (CSS, images)
