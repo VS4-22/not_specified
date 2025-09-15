@@ -61,7 +61,6 @@ npm start
 📂 Project Structure
 The repository is organized following a standard MVC-like pattern:
 
-```
 ├── public/               # Static assets (CSS, images)
 │   ├── stylesheets/
 │   └── images/
@@ -74,4 +73,3 @@ The repository is organized following a standard MVC-like pattern:
 ├── app.js                # Main Express server entry point
 ├── package.json          # Project dependencies and scripts
 └── .gitignore            # Files to be ignored by Git
-```
