@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Not_specified</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
+    <title>All Users</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-zinc-900 h-full w-full p-10">
-    <h1 class="text-3xl bg-zinc-900 mb-4 text-white">All Users</h1>
-    <div class="users flex gap-7 flex-wrap mb-8">
-    <% users.forEach(function(user){ %>
-            <div class="user w-64 p-4 bg-blue-200 rounded-lg">
-            <div class="bg-zinc-600 w-full h-52 rounded-lg overflow-hidden">
-                <img class=" h-full w-full object-cover" src="<%= user.image %>" alt="error">
-            </div>
-            <h3 class="text-xl mt-3 tracking-tighter"> <%= user.name %> </h3>
-            <h5 class="teaxt-zinc-500"><%= user.email %></h5>
-            <div class="flex gap-3 mt-6">
-                <a class="text-zinc-800" href="/edit/<%=user._id %>">Edit User</a>
-                <a class="text-red-500" href="/delete/<%=user._id %>">Delete User</a>
-            </div>
+  </head>
+  <body class="bg-zinc-900 min-h-screen w-full p-4 sm:p-6 lg:p-10">
+    <h1 class="text-3xl bg-zinc-900 mb-6 text-white">All Users</h1>
+
+    <div
+      class="users grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mb-8"
+    >
+      <% users.forEach(function(user){ %>
+      <div class="user w-full p-4 bg-blue-200 rounded-lg flex flex-col">
+        <div class="bg-zinc-600 w-full h-52 rounded-lg overflow-hidden">
+          <img
+            class="h-full w-full object-cover"
+            src="<%= user.image %>"
+            alt="User image"
+          />
         </div>
 
-    <% }) %>
+        <div class="flex-grow pt-3">
+          <h3 class="text-xl tracking-tighter truncate"><%= user.name %></h3>
+          <h5 class="text-zinc-500 truncate"><%= user.email %></h5>
+        </div>
+
+        <div class="flex gap-3 mt-4">
+          <a
+            class="text-zinc-800 font-medium hover:underline"
+            href="/edit/<%=user._id %>"
+            >Edit</a
+          >
+          <a
+            class="text-red-500 font-medium hover:underline"
+            href="/delete/<%=user._id %>"
+            >Delete</a
+          >
+        </div>
+      </div>
+      <% }) %>
     </div>
-    <a class="text-blue-400 mt-5" href="/">back to home</a>
-</body>
+
+    <a class="text-blue-400 mt-5 hover:underline" href="/">← Back to Home</a>
+  </body>
 </html>
