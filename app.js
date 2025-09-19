@@ -34,7 +34,7 @@ if(!user) {
   else {
     bcrypt.compare(req.body.key,usel.key,function(err,result){
      if(result){
-       let token = jwt.sign({email:usel.email},"shhhhhhh");
+       let token = jwt.sign({email:usel.email},"shht");
        res.cookie("token",token);
        res.redirect('/read');
      }
@@ -45,7 +45,7 @@ if(!user) {
 else{
   bcrypt.compare(req.body.key,user.key,function(err,result){
     if(result) {
-       let token = jwt.sign({email:user.email},"shhhhhhh");
+       let token = jwt.sign({email:user.email},"shht");
        res.cookie("token",token);
        res.redirect('/read');
     }
@@ -62,7 +62,7 @@ app.get('/edit/:id', async (req,res)=>{
   let user = await usemod.findOne({_id:req.params.id});
   res.render('edit',{user});
 })
-app.get('/read', async (req,res)=>{
+app.get('/read',midwaylo, async (req,res)=>{
   let users = await usemod.find();
   res.render('read',{users});
 })
@@ -77,19 +77,23 @@ app.post('/create',async (req,res)=>{
 })
 
 app.post('/cr',async (req,res)=>{
-  let hskey = await bcrypt.hash(req.body.key,10);
-  let createduser = await usemodd.create({ 
-    username:req.body.name,
-    email:req.body.email,
-    key:hskey
-  })
   if (!req.body.name || req.body.name.trim() === "") {
-  return res.json({ success: false, message: "Username cannot be blank" });
-   }
+    return res.json({ success: false, message: "Username cannot be blank" });
+  }
+  else if(req.body.email == "")res.send("Email missing!!")
   else if(req.body.key == "")res.send("password required")
-  else
- {
-   let token = jwt.sign({email:createduser.email},"shhhhhhh");
+    else
+  {
+    let user = await usemodd.findOne({email:req.body.email})
+    if(user) return res.send("Email is already registerd ,pls try different email");
+    let s = await bcrypt.genSalt(10)
+    let hskey = await bcrypt.hash(req.body.key,s);
+    let createduser = await usemodd.create({ 
+      username:req.body.name,
+      email:req.body.email,
+      key:hskey
+    })
+    let token = jwt.sign({email:createduser.email},"shht");
    res.cookie("token",token);
    res.redirect('/read');
  }
@@ -100,4 +104,12 @@ app.post('/edit/:id',async (req,res)=>{
     _id:req.params.id}, {name:req.body.name,email:req.body.email,image:req.body.image},{new:true})
  res.redirect('/read');
 })
+function midwaylo(req,res,next){
+  if(req.cookies.token ==='') return res.redirect("/?msg=login is required");
+  else{
+    let data = jwt.verify(req.cookies.token, "shht");
+    req.user = data;
+  }
+  next();
+}
 app.listen(4000);
